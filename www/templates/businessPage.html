@@ -1,0 +1,67 @@
+<ion-view title="businessPage" hide-nav-bar="true" hide-back-button="true" id="page6">
+  <ion-content padding="false" class="manual-ios-statusbar-padding" scroll="false">
+    <div id="businessPage-container3" class="categoryHead">
+      <div class="spacer" style="width: 320px; height: 11px;"></div>
+      <div style="padding-bottom:13px;" class="button-bar">
+        <a ng-if="subcategory == 'true'" style="text-align:left;float:left;color:white;position: absolute;top: 3vh;z-index: 5;" class="button button-light  button-clear icon-left ion-chevron-left" ng-click="subcat('false','Beauty')"></a>
+
+        <div style="color:#FFFFFF;font-size:26px;margin:0 auto;" class="categoryHeader">{{catText}}</div>
+
+      </div>
+      <form ng-if="subcategory == 'true'" class="list categoryForm" style="padding-top:0px;">
+        <label class="item item-input categorySearch" name="nameSearch">
+          <input style="color:white;" class="categoryInput" placeholder="Search by Business Name" type="text" ng-model="search.text" ng-change="searchBiz(search.text)">
+        </label>
+      </form>
+    </div>
+    <div ng-if="subcategory == 'false'" style="height: 87vh;">
+
+      <button ng-click="subcat('true','Hair')" style="margin:0px;;margin-bottom:7px;background-image:url(https://cdn.pixabay.com/photo/2015/07/07/11/36/haircut-834280_960_720.jpg);background-position-y: -16px;" class="button button-large button-full subcategoryButton">
+        <div class="innerbox">Hair
+          <span class="inboxspanArrow icon-right ion-ios-arrow-right"></span>
+        </div>
+      </button>
+
+
+      <button ng-click="subcat('true','Eyebrow')" style="margin:0px;;margin-bottom:7px;background-image:url(https://cdn.pixabay.com/photo/2010/12/13/10/07/beautiful-2314_960_720.jpg);background-position-y: 0px;" class="button button-large button-full subcategoryButton">
+        <div class="innerbox">Eyebrow
+          <span class="inboxspanArrow icon-right ion-ios-arrow-right"></span>
+        </div>
+      </button>
+
+
+      <button ng-click="subcat('true','Nails')" style="margin:0px;;margin-bottom:7px;background-image:url(https://cdn.pixabay.com/photo/2015/02/13/14/39/painting-fingernails-635261_960_720.jpg);background-position-y: -59px;" class="button button-large button-full subcategoryButton">
+        <div class="innerbox">Nails
+          <span class="inboxspanArrow icon-right ion-ios-arrow-right"></span>
+        </div>
+      </button>
+
+
+      <button ng-click="subcat('true','Spa')" style="margin:0px;margin-bottom:7px;background-image:url(https://cdn.pixabay.com/photo/2014/03/11/22/56/wellness-285587_960_720.jpg);background-position-y: -61px;" class="button button-large button-full subcategoryButton">
+        <div class="innerbox">Spa
+          <span class="inboxspanArrow icon-right ion-ios-arrow-right"></span>
+        </div>
+      </button>
+
+
+    </div>
+    <ion-scroll ng-if="subcategory == 'true'" scrollbar-y="false" direction="y" style="height: 78vh">
+
+      <h4 ng-if="getLength(businessList) === 0" style="
+    text-align: center;
+">Nothing Listed! Check back later.</h4>
+
+      <ion-item ng-repeat="(names,coup) in businessList" class="item-thumbnail-left item-icon-right assertive" style="">
+        <img src="https://images.vexels.com/media/users/3/132008/isolated/lists/78faad56af1268ad3a478fc44ec44f03-sandwich-house-logo.png">
+
+        <h2 class="itemHeader" style="font-size:20px;font-weight:bold;font-family: arial;margin-top:3vh">{{names}}
+          <p class="itemText">{{getLength(coup)}} Coupons</p>
+          <a ui-sref="coupons" ng-click="passStoreData(coup,names)" style="color:salmon;">
+            <i class="icon ion-chevron-right"></i>
+          </a>
+        </h2>
+
+      </ion-item>
+    </ion-scroll>
+  </ion-content>
+</ion-view>

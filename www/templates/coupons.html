@@ -1,0 +1,36 @@
+<ion-view title="coupons" hide-nav-bar="true" id="page4">
+  <ion-content padding="false" class="manual-ios-statusbar-padding" scroll="false">
+    <div id="coupons-container2" class="categoryHead">
+      <a ui-sref="businessPage" style="text-align:left; float:left;position:absolute;color:white;" class="button button-light  button-clear icon-left ion-chevron-left"></a>
+      <h2 id="coupons-heading2" style="color:#FFFFFF;text-align:center;" class="categoryHeader">{{storeData.businessName}}</h2>
+      <div>
+        <img src="img/78faad56af1268ad3a478fc44ec44f03-sandwich-house-logo.png" style="display: block; width: 33%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+    </div>
+    <ion-scroll scrollbar-y="false" direction="y" style="height: 68vh">
+
+      <!--<ion-slides>
+      <ion-slide-page ng-repeat="coupon in storeData.discountList"> -->
+
+      <ion-item ng-repeat="coupon in storeData.discountList" class="item-thumbnail-left item-icon-right assertive">
+
+        <h1 ng-if="coupon.edit == 'false' &amp;&amp; coupon.percent > 0" class="percentageIcon">{{coupon.percent}}%</h1>
+        <img class="imgThumb" src="{{coupon.image}}">
+
+        <h2 class="itemHeader" style="font-size:20px;font-weight:bold;font-family: arial;margin-top:3vh">{{coupon.title}}
+          <p class="itemText" style="word-wrap:initial;overflow:initial;padding-bottom:25px">{{coupon.description}}</p>
+        </h2>
+        <a ng-if="coupon.displayCode == 'false'" ng-click="triggerCoupon(coupon)" style="color:salmon;">
+          <i class="icon ion-chevron-down icon-accessory"></i>
+        </a>
+
+        <div ng-if="coupon.displayCode == 'true'" style="float:right;padding:5px 15px;border:1px solid green;background-color:lightgreen;color:black">{{coupon.code}}</div>
+
+      </ion-item>
+
+      <!--</ion-slide-page>
+ </ion-slides> -->
+
+    </ion-scroll>
+  </ion-content>
+</ion-view>
